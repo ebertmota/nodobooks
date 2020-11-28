@@ -1,28 +1,61 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  background: #000;
+  display: flex;
+  background: #0a0a0a;
   width: 100%;
   border-radius: 4px;
   max-width: 500px;
-  height: 43px;
-  padding: 0 13px;
+  padding: 15px;
 
   label {
     display: flex;
     align-items: center;
+
+    svg {
+      color: #fff;
+    }
   }
 
   input {
     font-weight: 600;
     margin-left: 13px;
     width: 100%;
-    background: #000;
+    background: transparent;
     border: 0;
     color: #fff;
 
+    svg {
+      color: #fff;
+    }
+
     ::placeholder {
       color: #fff;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    max-width: 40%;
+  }
+
+  @media (max-width: 700px) {
+    max-width: 100%;
+    background: #fff;
+    padding: 18px;
+    label {
+      svg {
+        color: #0a0a0a;
+      }
+    }
+
+    input {
+      font-size: 16px;
+
+      color: #0a0a0a;
+
+      ::placeholder {
+        color: #0a0a0a;
+      }
     }
   }
 `;

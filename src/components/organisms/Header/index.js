@@ -1,23 +1,30 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import Logo from '../../atoms/Logo';
 import SearchInput from '../../atoms/SearchInput';
+import NavMenu from '../../molecules/NavMenu';
 
-import { Container, Content } from './styles';
+import { Container, Content, Divider } from './styles';
 
-const Header = () => {
+const Header = ({ inputValueChanges }) => {
   return (
     <Container>
       <Content>
-        <div>
+        <Divider>
           <Logo />
-          <h1>Bookstore</h1>
-        </div>
+          <NavMenu />
 
-        <SearchInput />
+          <h1>Bookstore</h1>
+        </Divider>
+
+        <SearchInput onChangeText={inputValueChanges} />
       </Content>
     </Container>
   );
+};
+
+Header.propTypes = {
+  inputValueChanges: PropTypes.func.isRequired,
 };
 
 export default Header;
