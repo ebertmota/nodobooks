@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   display: flex;
@@ -6,13 +7,21 @@ export const Container = styled.div`
   justify-content: center;
   background: #ffffff;
   width: 100%;
+  max-width: 1135px;
+  padding: 0 15px;
+  z-index: 10;
   min-height: 116px;
-  height: 100%;
   color: #0a0a0a;
 
   @media (max-width: 700px) {
     background: #0a0a0a;
-    color: #fbfdff;
+    a {
+      color: #fbfdff;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    position: fixed;
   }
 `;
 
@@ -20,7 +29,6 @@ export const Content = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 58px;
 
   width: 100%;
   max-width: 1280px;
@@ -32,7 +40,7 @@ export const Content = styled.header`
   }
 `;
 
-export const Divider = styled.div`
+export const LinkContainer = styled(Link)`
   display: flex;
   align-items: center;
   z-index: 10;

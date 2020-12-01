@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 
 import api from '../../../services/api';
 
-import { Container, CategoryItem } from './styles';
+import { Container, CategoryItem, CategoryList } from './styles';
 
-const Menu = ({ isOpened, onCategoryChange }) => {
+const Menu = ({ isOpened, onCategoryChange, defaultCategory }) => {
   const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState(0);
+  const [selectedCategory, setSelectedCategory] = useState(defaultCategory);
 
   const loadCategories = useCallback(async () => {
     const response = await api.get('/categories');
@@ -30,25 +30,27 @@ const Menu = ({ isOpened, onCategoryChange }) => {
 
   return (
     <Container open={isOpened}>
-      <CategoryItem
-        onClick={() => handleCategoryChanges(0)}
-        selected={!!(selectedCategory === 0)}
-      >
-        {selectedCategory === 0 && <FaCircle color="#756AD3" size={10} />}
-        <span>All categories</span>
-      </CategoryItem>
-      {categories.map(category => (
+      <CategoryList>
         <CategoryItem
-          key={category.id}
-          onClick={() => handleCategoryChanges(category.id)}
-          selected={!!(selectedCategory === category.id)}
+          onClick={() => handleCategoryChanges(0)}
+          selected={!!(selectedCategory === 0)}
         >
-          {selectedCategory === category.id && (
-            <FaCircle color="#756AD3" size={10} />
-          )}
-          <span>{category.name}</span>
+          {selectedCategory === 0 && <FaCircle color="#756AD3" size={10} />}
+          <span>All categories</span>
         </CategoryItem>
-      ))}
+        {categories.map(category => (
+          <CategoryItem
+            key={category.id}
+            onClick={() => handleCategoryChanges(category.id)}
+            selected={!!(selectedCategory === category.id)}
+          >
+            {selectedCategory === category.id && (
+              <FaCircle color="#756AD3" size={10} />
+            )}
+            <span>{category.name}</span>
+          </CategoryItem>
+        ))}
+      </CategoryList>
     </Container>
   );
 };
@@ -56,10 +58,12 @@ const Menu = ({ isOpened, onCategoryChange }) => {
 Menu.propTypes = {
   isOpened: PropTypes.bool,
   onCategoryChange: PropTypes.func.isRequired,
+  defaultCategory: PropTypes.number,
 };
 
 Menu.defaultProps = {
   isOpened: false,
+  defaultCategory: 0,
 };
 
 export default Menu;

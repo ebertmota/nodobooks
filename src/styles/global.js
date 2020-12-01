@@ -24,4 +24,13 @@ export default createGlobalStyle`
   h2 {
     font-weight: 600;
   }
+
+  ul {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+    color: #1C2A39;
+  }
 `;

@@ -1,38 +1,46 @@
 import styled, { css } from 'styled-components';
 
-export const Container = styled.nav`
-  display: flex;
-  flex-direction: column;
-
+export const Container = styled.div`
+  transition: opacity 0.3s linear;
+  z-index: 1;
   background: #efeef6;
   height: 100vh;
   width: 100%;
-
-  transition: opacity 0.3s linear;
-  z-index: 1;
-  padding: 60px 20px;
-
   @media (max-width: 1024px) {
     position: absolute;
     top: 0;
     left: 0;
     opacity: ${({ open }) => (open ? '1' : '0')};
     transform: ${({ open }) =>
+      open ? 'translateY(100px)' : 'translateY(-100%)'};
+  }
+
+  @media (max-width: 700px) {
+    transform: ${({ open }) =>
       open ? 'translateY(82px)' : 'translateY(-100%)'};
   }
 
   @media (min-width: 1024px) {
+    display: flex;
+    align-items: center;
     justify-content: center;
-    align-items: left;
-    padding: 0 100px;
+
     width: 100%;
     min-width: 416px;
-    margin-top: 200px;
     height: 710px;
   }
 `;
 
-export const CategoryItem = styled.p`
+export const CategoryList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 252px;
+  padding: 60px 20px;
+`;
+
+export const CategoryItem = styled.li`
+  list-style: none;
   cursor: pointer;
   font-weight: 500;
   font-size: 16px;

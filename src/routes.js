@@ -8,7 +8,7 @@ import Detail from './pages/Detail';
 const Routes = () => (
   <Switch>
     <Route path="/" exact component={Home} />
-    <Route path="/detail" component={Detail} />
+    <Route path="/detail/:id" component={Detail} />
   </Switch>
 );
 

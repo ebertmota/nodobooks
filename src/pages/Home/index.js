@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import ReactStars from 'react-stars';
-
 import api from '../../services/api';
 
 import Menu from '../../components/atoms/Menu';
+import Button from '../../components/atoms/Button';
 import Header from '../../components/organisms/Header';
 import bannerImg from '../../assets/banner.svg';
 
@@ -12,13 +13,12 @@ import {
   Content,
   BookList,
   BookItem,
+  BookPrice,
+  BookAuthor,
   BannerImage,
   Main,
   MenuContainer,
-  BookTitle,
   StarsContainer,
-  BookPrice,
-  Button,
 } from './styles';
 
 const Home = () => {
@@ -55,22 +55,27 @@ const Home = () => {
 
   return (
     <Container>
-      <Header inputValueChanges={searchBooks} />
+      <Header
+        inputValueChanges={searchBooks}
+        onCategoryChange={loadBooksByCategory}
+      />
+
       <Content>
-        <BannerImage src={bannerImg} alt="Big Summer Sale" />
+        <BannerImage src={bannerImg} />
 
         <Main>
           <MenuContainer>
             <Menu onCategoryChange={loadBooksByCategory} />
           </MenuContainer>
-
           <BookList>
             {books.map(book => (
               <BookItem key={book.id}>
-                <img src={book.cover} alt="anyt" />
+                <Link to={`/detail/${book.id}`}>
+                  <img src={book.cover} alt={book.name} />
+                </Link>
                 <div>
-                  <span>{book.author}</span>
-                  <BookTitle>{book.title}</BookTitle>
+                  <BookAuthor>{book.author}</BookAuthor>
+                  <Link to={`/detail/${book.id}`}>{book.title}</Link>
                   <StarsContainer>
                     <ReactStars
                       value={book.stars}
@@ -82,13 +87,13 @@ const Home = () => {
                     />
                     <span>
                       {book.reviews}
+                      {'\n'}
                       review
                     </span>
                   </StarsContainer>
 
                   <p>{book.description}</p>
-                  <BookPrice>{book.price}</BookPrice>
-
+                  <BookPrice>{`$ ${book.price}`}</BookPrice>
                   <Button>BUY NOW</Button>
                 </div>
               </BookItem>

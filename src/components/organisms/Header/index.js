@@ -1,21 +1,22 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import Logo from '../../atoms/Logo';
 import SearchInput from '../../atoms/SearchInput';
 import NavMenu from '../../molecules/NavMenu';
 
-import { Container, Content, Divider } from './styles';
+import { Container, Content, LinkContainer } from './styles';
 
-const Header = ({ inputValueChanges }) => {
+const Header = ({ inputValueChanges, onCategoryChange }) => {
   return (
     <Container>
       <Content>
-        <Divider>
+        <LinkContainer to="/">
           <Logo />
-          <NavMenu />
+          <NavMenu onCategoryChange={onCategoryChange} />
 
           <h1>Bookstore</h1>
-        </Divider>
+        </LinkContainer>
 
         <SearchInput onChangeText={inputValueChanges} />
       </Content>
@@ -25,6 +26,7 @@ const Header = ({ inputValueChanges }) => {
 
 Header.propTypes = {
   inputValueChanges: PropTypes.func.isRequired,
+  onCategoryChange: PropTypes.func.isRequired,
 };
 
 export default Header;
