@@ -8,6 +8,7 @@ import Button from '../../components/atoms/Button';
 import Header from '../../components/organisms/Header';
 import bannerImg from '../../assets/banner.svg';
 
+import PurchaseModal from '../../components/organisms/PurchaseModal';
 import {
   Container,
   Content,
@@ -23,6 +24,8 @@ import {
 
 const Home = () => {
   const [books, setBooks] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedBook, setSelectedBook] = useState();
 
   useEffect(() => {
     async function loadBooks() {
@@ -53,6 +56,23 @@ const Home = () => {
     setBooks(response.data.rows);
   }, []);
 
+  const toggleModal = useCallback(book_id => {
+    setSelectedBook(book_id);
+    setModalOpen(modal => !modal);
+  }, []);
+
+  const handleSubmit = useCallback(
+    async data => {
+      console.log(data);
+      await api.post('/buy', {
+        data: {
+          product_id: selectedBook,
+          ...data,
+        },
+      });
+    },
+    [selectedBook],
+  );
   return (
     <Container>
       <Header
@@ -62,6 +82,11 @@ const Home = () => {
 
       <Content>
         <BannerImage src={bannerImg} />
+        <PurchaseModal
+          isOpen={modalOpen}
+          setIsOpen={toggleModal}
+          handlePurchase={handleSubmit}
+        />
 
         <Main>
           <MenuContainer>
@@ -94,7 +119,7 @@ const Home = () => {
 
                   <p>{book.description}</p>
                   <BookPrice>{`$ ${book.price}`}</BookPrice>
-                  <Button>BUY NOW</Button>
+                  <Button onClick={() => toggleModal(book.id)}>BUY NOW</Button>
                 </div>
               </BookItem>
             ))}

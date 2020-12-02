@@ -2,10 +2,13 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import ReactStars from 'react-stars';
 import api from '../../services/api';
+
 import Menu from '../../components/atoms/Menu';
 
 import Button from '../../components/atoms/Button';
 import Header from '../../components/organisms/Header';
+
+import PurchaseModal from '../../components/organisms/PurchaseModal';
 
 import {
   Container,
@@ -23,6 +26,7 @@ const Detail = () => {
   const { push } = useHistory();
 
   const [book, setBook] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     async function loadBooks() {
@@ -47,6 +51,22 @@ const Detail = () => {
     setBook(response.data.rows);
   }, []);
 
+  const toggleModal = useCallback(() => {
+    setModalOpen(modal => !modal);
+  }, []);
+
+  const handleSubmit = useCallback(
+    async data => {
+      await api.post('/buy', {
+        data: {
+          product_id: book.id,
+          ...data,
+        },
+      });
+    },
+    [book.id],
+  );
+
   return (
     <Container>
       <Header
@@ -54,6 +74,11 @@ const Detail = () => {
         onCategoryChange={loadBooksByCategory}
       />
       <Content>
+        <PurchaseModal
+          isOpen={modalOpen}
+          setIsOpen={toggleModal}
+          handlePurchase={handleSubmit}
+        />
         <MenuContainer>
           {book.category > 0 && (
             <Menu
@@ -62,6 +87,7 @@ const Detail = () => {
             />
           )}
         </MenuContainer>
+
         <BookContainer>
           <BookItem key={book.id}>
             <div>
@@ -89,7 +115,7 @@ const Detail = () => {
               </header>
 
               <BookPrice>{`$ ${book.price}`}</BookPrice>
-              <Button>BUY NOW</Button>
+              <Button onClick={toggleModal}>BUY NOW</Button>
               <p>{book.description}</p>
             </div>
           </BookItem>

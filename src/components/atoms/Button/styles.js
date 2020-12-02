@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.button`
   max-width: ${props => props.maxWidth && props.maxWidth};
@@ -16,10 +16,28 @@ export const Container = styled.button`
   font-size: 12px;
   transition: background 0.2s linear;
 
-  &:hover {
-    background: #4c3db2;
-    color: #fff;
-  }
+  ${props =>
+    props.unSelectable &&
+    css`
+      border: 1px solid #666666;
+      color: #666666;
+    `}
+
+  ${props =>
+    props.selected &&
+    css`
+      background: #4c3db2;
+      color: #fff;
+    `}
+
+    ${props =>
+    !props.unSelectable &&
+    css`
+      &:hover {
+        background: #4c3db2;
+        color: #fff;
+      }
+    `}
 
   @media (max-width: 1366px) {
     margin-top: 10px;

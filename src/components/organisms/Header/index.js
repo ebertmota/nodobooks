@@ -1,22 +1,26 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Logo from '../../atoms/Logo';
 import SearchInput from '../../atoms/SearchInput';
 import NavMenu from '../../molecules/NavMenu';
 
-import { Container, Content, LinkContainer } from './styles';
+import { Container, Content, MenuContainer } from './styles';
 
 const Header = ({ inputValueChanges, onCategoryChange }) => {
   return (
     <Container>
       <Content>
-        <LinkContainer to="/">
-          <Logo />
-          <NavMenu onCategoryChange={onCategoryChange} />
+        <MenuContainer>
+          <Link to="/">
+            <Logo />
+          </Link>
 
-          <h1>Bookstore</h1>
-        </LinkContainer>
+          <NavMenu onCategoryChange={onCategoryChange} />
+          <Link to="/">
+            <h1>Bookstore</h1>
+          </Link>
+        </MenuContainer>
 
         <SearchInput onChangeText={inputValueChanges} />
       </Content>
