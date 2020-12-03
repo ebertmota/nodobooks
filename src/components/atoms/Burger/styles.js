@@ -21,6 +21,8 @@ export const Container = styled.div`
   div {
     width: 2rem;
     height: 0.25rem;
+    outline: 0;
+
     @media (max-width: 700px) {
       background: #fff;
     }
@@ -41,6 +43,15 @@ export const Container = styled.div`
 
     :nth-child(3) {
       transform: ${({ open }) => (open ? 'rotate(-45deg)' : 'rotate(0)')};
+    }
+  }
+
+  @media (max-width: 400px) {
+    height: 25px;
+
+    div {
+      width: 25px;
+      height: 2px;
     }
   }
 `;

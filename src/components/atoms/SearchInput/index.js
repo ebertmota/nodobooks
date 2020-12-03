@@ -4,7 +4,7 @@ import { FiSearch } from 'react-icons/fi';
 
 import { Container } from './styles';
 
-const SearchInput = ({ onChangeText }) => {
+const SearchInput = ({ onChangeText, inputClick, inputRef }) => {
   const [inputValue, setInputValue] = useState('');
 
   const handleInputTextChanges = useCallback(
@@ -16,7 +16,7 @@ const SearchInput = ({ onChangeText }) => {
   );
 
   return (
-    <Container>
+    <Container onClick={inputClick}>
       <label htmlFor="search-input">
         <FiSearch />
       </label>
@@ -25,6 +25,7 @@ const SearchInput = ({ onChangeText }) => {
         placeholder="Search"
         id="search-input"
         value={inputValue}
+        ref={inputRef}
         onChange={handleInputTextChanges}
       />
     </Container>
@@ -33,6 +34,13 @@ const SearchInput = ({ onChangeText }) => {
 
 SearchInput.propTypes = {
   onChangeText: PropTypes.func.isRequired,
+  inputClick: PropTypes.func,
+  inputRef: PropTypes.func,
+};
+
+SearchInput.defaultProps = {
+  inputClick: () => {},
+  inputRef: () => {},
 };
 
 export default SearchInput;

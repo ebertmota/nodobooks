@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { Container } from './styles';
 
 const Burguer = ({ onClick, isOpened }) => {
@@ -15,7 +14,7 @@ const Burguer = ({ onClick, isOpened }) => {
 
 Burguer.propTypes = {
   onClick: PropTypes.func.isRequired,
-  isOpened: PropTypes.func,
+  isOpened: PropTypes.bool,
 };
 
 Burguer.defaultProps = {

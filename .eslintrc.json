@@ -30,6 +30,7 @@
       "jsx-a11y/label-has-associated-control": "off",
       "react/jsx-props-no-spreading": "off",
       "react/prop-types": [2, { "ignore": ["children"] }],
-      "react/forbid-prop-types": "off"
+      "react/forbid-prop-types": "off",
+      "no-unused-vars": "off"
     }
 }

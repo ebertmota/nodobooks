@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 import Modal from '../../molecules/Modal';
 import Button from '../../atoms/Button';
-import Input from '../../atoms/Input';
+import InputField from '../../molecules/InputField';
 import getValidationErrors from '../../../utils/getValidationErrors';
 import {
   Container,
@@ -62,18 +62,18 @@ const PurchaseModal = ({ isOpen, setIsOpen, handlePurchase }) => {
           <Form ref={formRef} onSubmit={handleSubmit}>
             <h1>Buy now</h1>
 
-            <Input
+            <InputField
               labelText="Name"
               name="name"
               placeholder="Type your name here"
             />
-            <Input
+            <InputField
               type="email"
               labelText="E-mail"
               name="email"
               placeholder="Type your e-mail here"
             />
-            <Input
+            <InputField
               labelText="Phone"
               type="number"
               name="phone"

@@ -1,0 +1,35 @@
+---
+name: Burguer
+route: '/'
+---
+
+import { Playground, Props } from 'docz';
+import Burguer from './index';
+
+# Burguer
+
+## Definition and Usage
+The Burguer component creates an button.
+
+
+<Playground>
+<Burguer />
+
+</Playground>
+
+## Properties
+<Props of={Burguer} />
+
+## Examples
+
+### onClick
+<Playground>
+  <Burguer onClick={()=> alert('Clicked')}/>
+</Playground>
+
+
+### isOpened
+<Playground>
+  <Burguer isOpened={true}/>
+</Playground>
+

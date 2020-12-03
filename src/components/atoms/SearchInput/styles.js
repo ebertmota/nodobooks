@@ -41,7 +41,6 @@ export const Container = styled.div`
   @media (max-width: 700px) {
     max-width: 100%;
     background: #fff;
-    padding: 18px;
     label {
       svg {
         color: #0a0a0a;
@@ -57,5 +56,8 @@ export const Container = styled.div`
         color: #0a0a0a;
       }
     }
+  }
+  @media (max-width: 400px) {
+    padding: 10px;
   }
 `;

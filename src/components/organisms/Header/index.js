@@ -7,7 +7,12 @@ import NavMenu from '../../molecules/NavMenu';
 
 import { Container, Content, MenuContainer } from './styles';
 
-const Header = ({ inputValueChanges, onCategoryChange }) => {
+const Header = ({
+  inputValueChanges,
+  inputClick,
+  inputRef,
+  onCategoryChange,
+}) => {
   return (
     <Container>
       <Content>
@@ -22,7 +27,11 @@ const Header = ({ inputValueChanges, onCategoryChange }) => {
           </Link>
         </MenuContainer>
 
-        <SearchInput onChangeText={inputValueChanges} />
+        <SearchInput
+          onChangeText={inputValueChanges}
+          inputClick={inputClick}
+          inputRef={inputRef}
+        />
       </Content>
     </Container>
   );
@@ -31,6 +40,13 @@ const Header = ({ inputValueChanges, onCategoryChange }) => {
 Header.propTypes = {
   inputValueChanges: PropTypes.func.isRequired,
   onCategoryChange: PropTypes.func.isRequired,
+  inputClick: PropTypes.func,
+  inputRef: PropTypes.func,
+};
+
+Header.defaultProps = {
+  inputClick: () => {},
+  inputRef: () => {},
 };
 
 export default Header;

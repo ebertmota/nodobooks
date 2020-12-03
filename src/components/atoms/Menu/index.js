@@ -6,23 +6,42 @@ import api from '../../../services/api';
 
 import { Container, CategoryItem, CategoryList } from './styles';
 
-const Menu = ({ isOpened, onCategoryChange, defaultCategory }) => {
+const Menu = ({ isOpened, onCategoryChange }) => {
   const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState(defaultCategory);
+  const [selectedCategory, setSelectedCategory] = useState(0);
 
   const loadCategories = useCallback(async () => {
-    const response = await api.get('/categories');
+    const storagedCategories = localStorage.getItem('@nodobooks/categories');
 
-    setCategories(response.data.rows);
+    if (storagedCategories) {
+      setCategories(JSON.parse(storagedCategories));
+    } else {
+      const response = await api.get('/categories');
+
+      setCategories(response.data.rows);
+      localStorage.setItem(
+        '@nodobooks/categories',
+        JSON.stringify(response.data.rows),
+      );
+    }
   }, []);
 
   useEffect(() => {
     loadCategories();
+
+    const storagedSelectedCategory = localStorage.getItem(
+      '@nodobooks/selected-categories',
+    );
+
+    if (storagedSelectedCategory) {
+      setSelectedCategory(Number(storagedSelectedCategory));
+    }
   }, [loadCategories]);
 
   const handleCategoryChanges = useCallback(
     category_id => {
       setSelectedCategory(category_id);
+      localStorage.setItem('@nodobooks/selected-categories', category_id);
       onCategoryChange(category_id);
     },
     [setSelectedCategory, onCategoryChange],
@@ -58,12 +77,10 @@ const Menu = ({ isOpened, onCategoryChange, defaultCategory }) => {
 Menu.propTypes = {
   isOpened: PropTypes.bool,
   onCategoryChange: PropTypes.func.isRequired,
-  defaultCategory: PropTypes.number,
 };
 
 Menu.defaultProps = {
   isOpened: false,
-  defaultCategory: 0,
 };
 
 export default Menu;

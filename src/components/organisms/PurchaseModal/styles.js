@@ -3,7 +3,7 @@ import { Form as Unform } from '@unform/web';
 
 export const Container = styled.div`
   background: #fff;
-  padding: 40px;
+  padding: 20px;
   border-radius: 10px;
   height: 100%;
 `;

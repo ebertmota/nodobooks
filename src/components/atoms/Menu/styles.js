@@ -2,10 +2,9 @@ import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   transition: opacity 0.3s linear;
-  z-index: 1;
   background: #efeef6;
-  height: 100vh;
   width: 100%;
+  height: 100vh;
   @media (max-width: 1024px) {
     position: absolute;
     top: 0;
@@ -16,15 +15,22 @@ export const Container = styled.div`
   }
 
   @media (max-width: 700px) {
+    padding: 20px;
     transform: ${({ open }) =>
       open ? 'translateY(82px)' : 'translateY(-100%)'};
+  }
+
+  @media (max-width: 400px) {
+    padding: 20px;
+    transform: ${({ open }) =>
+      open ? 'translateY(60px)' : 'translateY(-100%)'};
   }
 
   @media (min-width: 1024px) {
     display: flex;
     align-items: center;
     justify-content: center;
-
+    padding: 60px;
     width: 100%;
     min-width: 416px;
     height: 710px;
@@ -35,8 +41,15 @@ export const CategoryList = styled.ul`
   display: flex;
   flex-direction: column;
   text-align: left;
-  width: 252px;
+  width: 100%;
+  height: 100%;
+
   padding: 60px 20px;
+
+  @media (max-width: 700px) {
+    min-height: 100vh;
+    padding: 10px;
+  }
 `;
 
 export const CategoryItem = styled.li`
@@ -61,4 +74,8 @@ export const CategoryItem = styled.li`
         margin-left: 10px;
       }
     `}
+
+  @media (max-width: 700px) {
+    margin: 12px 0;
+  }
 `;

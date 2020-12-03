@@ -6,23 +6,21 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
+  height: 100%;
 `;
 
 export const Content = styled.div`
+  min-height: 100vh;
+  padding-top: 116px;
   height: 100%;
   width: 100%;
   max-width: 1135px;
   @media (min-width: 1024px) {
-    padding: 0 15px;
     display: flex;
   }
 
   @media (max-width: 1024px) {
-    padding: 10% 0px;
-  }
-
-  @media (max-width: 700px) {
-    padding-top: 186px;
+    padding: 180px 0px;
   }
 `;
 

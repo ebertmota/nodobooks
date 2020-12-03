@@ -4,9 +4,9 @@ import ReactStars from 'react-stars';
 import api from '../../services/api';
 
 import Menu from '../../components/atoms/Menu';
-
 import Button from '../../components/atoms/Button';
 import Header from '../../components/organisms/Header';
+import Footer from '../../components/atoms/Footer';
 
 import PurchaseModal from '../../components/organisms/PurchaseModal';
 
@@ -41,15 +41,17 @@ const Detail = () => {
     push('/');
   }, [push]);
 
-  const searchBooks = useCallback(async name => {
-    const response = await api.get('/books/search', {
-      params: {
-        query: name,
-      },
-    });
-
-    setBook(response.data.rows);
-  }, []);
+  const searchBooks = useCallback(
+    async name => {
+      push({
+        pathname: '/',
+        state: {
+          inputFocus: true,
+        },
+      });
+    },
+    [push],
+  );
 
   const toggleModal = useCallback(() => {
     setModalOpen(modal => !modal);
@@ -71,6 +73,7 @@ const Detail = () => {
     <Container>
       <Header
         inputValueChanges={searchBooks}
+        inputClick={searchBooks}
         onCategoryChange={loadBooksByCategory}
       />
       <Content>
@@ -80,12 +83,7 @@ const Detail = () => {
           handlePurchase={handleSubmit}
         />
         <MenuContainer>
-          {book.category > 0 && (
-            <Menu
-              onCategoryChange={loadBooksByCategory}
-              defaultCategory={book.category}
-            />
-          )}
+          <Menu onCategoryChange={loadBooksByCategory} />
         </MenuContainer>
 
         <BookContainer>
@@ -121,6 +119,7 @@ const Detail = () => {
           </BookItem>
         </BookContainer>
       </Content>
+      <Footer />
     </Container>
   );
 };

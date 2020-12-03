@@ -10,21 +10,20 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   height: 100%;
+  min-height: 100vh;
   width: 100%;
   max-width: 1135px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  @media (min-width: 1024px) {
-    padding: 0 15px;
-  }
+  padding-top: 116px;
 
-  @media (max-width: 1024px) {
-    padding: 10% 0px;
+  @media (max-width: 900px) {
+    padding: 20% 0px;
   }
 
   @media (max-width: 700px) {
-    padding-top: 186px;
+    padding: 40% 0px;
   }
 `;
 
@@ -36,6 +35,12 @@ export const BannerImage = styled.img`
 
 export const Main = styled.main`
   display: flex;
+  @media (max-width: 1024px) {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export const MenuContainer = styled.div`
@@ -51,7 +56,6 @@ export const BookList = styled.div`
   margin-top: 200px;
   margin-left: -5%;
   width: 100%;
-
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 32px;
@@ -72,7 +76,7 @@ export const BookItem = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
-
+  justify-content: center;
   font-family: 'Open-sans', sans-serif;
   color: #5c6a79;
   a {
@@ -90,7 +94,6 @@ export const BookItem = styled.div`
     width: 100%;
     font-size: 14px;
     margin-left: 40px;
-
     p {
       height: 50px;
       text-align: left;
@@ -105,6 +108,13 @@ export const BookItem = styled.div`
       font-family: 'Montserrat', sans-serif;
       color: #1c2a39;
       font-size: 16px;
+    }
+
+    @media (max-width: 700px) {
+      a {
+        min-height: 70px;
+        max-height: 60px;
+      }
     }
   }
 
@@ -128,10 +138,6 @@ export const BookItem = styled.div`
 
       p {
         display: none;
-      }
-
-      strong {
-        height: 50px;
       }
     }
   }
@@ -198,6 +204,53 @@ export const StarsContainer = styled.div`
   @media (max-width: 1180px) {
     > span {
       display: none;
+    }
+  }
+`;
+
+export const ErrorMessageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 1024px) {
+    margin: 200px auto;
+  }
+
+  img {
+    max-width: 600px;
+    margin: 0 auto;
+
+    @media (max-width: 900px) {
+      max-width: 400px;
+    }
+
+    @media (max-width: 700px) {
+      max-width: 300px;
+    }
+  }
+
+  div {
+    @media (min-width: 700px) {
+      align-items: center;
+    }
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 30px;
+    width: 100%;
+    strong {
+      margin-top: 30px;
+      font-size: 36px;
+    }
+    p {
+      display: block;
+      margin: 10px auto;
+      font-size: 24px;
     }
   }
 `;
