@@ -26,7 +26,7 @@ obrigatórios para que o setor de atendimento entre em contato.
 ### Clonando repositório
 
 ```sh
-  git clone https://github.com/ebertmota/Nodobooks.git
+  git clone https://github.com/ebertmota/nodobooks.git
 ```
 Agora é só você entrar na pasta do projeto e baixar as dependências.
  
