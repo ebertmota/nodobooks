@@ -4,15 +4,16 @@ import { Link } from 'react-router-dom';
 import ReactStars from 'react-stars';
 import animateScrollTo from 'animated-scroll-to';
 import api from '../../services/api';
+
 import Menu from '../../components/atoms/Menu';
 import Button from '../../components/atoms/Button';
-import Header from '../../components/organisms/Header';
 import Footer from '../../components/atoms/Footer';
+import Header from '../../components/organisms/Header';
+import PurchaseModal from '../../components/organisms/PurchaseModal';
 
 import error404img from '../../assets/404.svg';
 import bannerImg from '../../assets/banner.svg';
 
-import PurchaseModal from '../../components/organisms/PurchaseModal';
 import {
   Container,
   Content,

@@ -1,6 +1,12 @@
 import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
+  ${props =>
+    props.maxWidth &&
+    css`
+      min-width: 0px;
+      max-width: ${props.maxWidth};
+    `}
   transition: opacity 0.3s linear;
   background: #efeef6;
   width: 100%;

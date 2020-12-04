@@ -5,10 +5,9 @@ import api from '../../services/api';
 
 import Menu from '../../components/atoms/Menu';
 import Button from '../../components/atoms/Button';
-import Header from '../../components/organisms/Header';
 import Footer from '../../components/atoms/Footer';
-
 import PurchaseModal from '../../components/organisms/PurchaseModal';
+import Header from '../../components/organisms/Header';
 
 import {
   Container,

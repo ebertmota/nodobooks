@@ -18,10 +18,10 @@ export const Container = styled.div`
   }
 
   input {
-    font-weight: 600;
-    margin-left: 13px;
     width: 100%;
     background: transparent;
+    font-weight: 600;
+    margin-left: 13px;
     border: 0;
     color: #fff;
 

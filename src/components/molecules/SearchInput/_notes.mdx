@@ -1,0 +1,23 @@
+---
+name: SearchInput
+route: '/search-input'
+---
+
+import { Playground, Props } from 'docz';
+import SearchInput from './index';
+
+# SearchInput
+
+## Definition and Usage
+Creates an styled div with input and icon elements.
+
+
+<Playground>
+  <SearchInput type="text" name="name" onChangeText={(text) => {console.log(text)}}/>
+</Playground>
+
+
+## Properties
+<Props of={SearchInput} />
+
+

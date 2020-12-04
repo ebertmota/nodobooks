@@ -1,12 +1,12 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { FaCircle } from 'react-icons/fa';
 import PropTypes from 'prop-types';
+import { FaCircle } from 'react-icons/fa';
 
 import api from '../../../services/api';
 
 import { Container, CategoryItem, CategoryList } from './styles';
 
-const Menu = ({ isOpened, onCategoryChange }) => {
+const Menu = ({ isOpened, onCategoryChange, maxWidth }) => {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(0);
 
@@ -48,7 +48,7 @@ const Menu = ({ isOpened, onCategoryChange }) => {
   );
 
   return (
-    <Container open={isOpened}>
+    <Container open={isOpened} maxWidth={maxWidth}>
       <CategoryList>
         <CategoryItem
           onClick={() => handleCategoryChanges(0)}
@@ -75,12 +75,20 @@ const Menu = ({ isOpened, onCategoryChange }) => {
 };
 
 Menu.propTypes = {
-  isOpened: PropTypes.bool,
+  /**
+   * Required function, called every time when user select a new category
+   */
   onCategoryChange: PropTypes.func.isRequired,
+  /**
+   * If Menu isOpened he will receive a translateY(-100%) hiding you content. This feature is used on mobile menu.
+   */
+  isOpened: PropTypes.bool,
+  maxWidth: PropTypes.string,
 };
 
 Menu.defaultProps = {
   isOpened: false,
+  maxWidth: '100%',
 };
 
 export default Menu;

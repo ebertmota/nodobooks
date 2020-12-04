@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { Container } from './styles';
 
 const Button = ({ children, maxWidth, selected, unSelectable, ...rest }) => {
@@ -17,8 +18,17 @@ const Button = ({ children, maxWidth, selected, unSelectable, ...rest }) => {
 };
 
 Button.propTypes = {
+  /**
+   * Defines the button max width.
+   */
   maxWidth: PropTypes.string,
+  /**
+   * Change button style if he is selected.
+   */
   selected: PropTypes.bool,
+  /**
+   * Disable button hover effects
+   */
   unSelectable: PropTypes.bool,
 };
 

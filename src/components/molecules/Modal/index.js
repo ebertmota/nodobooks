@@ -43,7 +43,13 @@ const Modal = ({ children, isOpen, setIsOpen }) => {
 };
 
 Modal.propTypes = {
+  /**
+   *  Defines whether the modal is open
+   */
   isOpen: PropTypes.bool.isRequired,
+  /**
+   *  function called for change modal status, closing or opening
+   */
   setIsOpen: PropTypes.func.isRequired,
 };
 

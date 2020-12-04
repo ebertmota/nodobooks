@@ -3,7 +3,7 @@ name: Input
 route: '/input'
 ---
 
-import { Playground } from 'docz';
+import { Playground, Props } from 'docz';
 import Input from './index';
 
 # Input
@@ -11,9 +11,14 @@ import Input from './index';
 ## Definition and Usage
 The Input component creates an styled html input element.
 
-> All the html input properties are working with this component
 
 <Playground>
-<Input type="text" name="name"/>
-
+  <Input type="text" name="name" backgroundColor="#eee"/>
 </Playground>
+
+
+## Properties
+<Props of={Input} />
+
+> All the html input properties are working with this component
+

@@ -1,0 +1,30 @@
+---
+name: Menu
+route: '/menu'
+---
+
+import { Playground, Props } from 'docz';
+import Menu from './index';
+
+# Menu
+
+## Definition and Usage
+The component menu shows a container with the load categories of the api,
+allowing you to switch between them.
+
+> Menu stores the loaded categories and the last category you selected in localStorage for an better performance.
+
+
+## Properties
+
+  <Props of={Menu}/>
+
+## Examples
+
+### onCategoryChange
+<Playground>
+  <Menu onCategoryChange={(selected_category) => {alert(`you selected the category ${selected_category}`)}} maxWidth="300px"/>
+</Playground>
+
+<br />
+

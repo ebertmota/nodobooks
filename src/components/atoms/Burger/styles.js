@@ -10,6 +10,7 @@ export const Container = styled.div`
   height: 2rem;
   background: transparent;
   border: none;
+
   cursor: pointer;
   padding: 0;
   z-index: 10;

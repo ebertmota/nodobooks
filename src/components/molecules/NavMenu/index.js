@@ -25,6 +25,9 @@ const NavMenu = ({ onCategoryChange }) => {
 };
 
 NavMenu.propTypes = {
+  /**
+   * Will be pass to Menu component inside NavMenu
+   */
   onCategoryChange: PropTypes.func.isRequired,
 };
 

@@ -2,9 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Logo from '../../atoms/Logo';
-import SearchInput from '../../atoms/SearchInput';
+import SearchInput from '../../molecules/SearchInput';
 import NavMenu from '../../molecules/NavMenu';
-
 import { Container, Content, MenuContainer } from './styles';
 
 const Header = ({
@@ -38,7 +37,13 @@ const Header = ({
 };
 
 Header.propTypes = {
+  /**
+   * Refence for input onChange event
+   */
   inputValueChanges: PropTypes.func.isRequired,
+  /**
+   * Refence for Menu onChange event
+   */
   onCategoryChange: PropTypes.func.isRequired,
   inputClick: PropTypes.func,
   inputRef: PropTypes.func,

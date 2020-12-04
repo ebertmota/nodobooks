@@ -33,8 +33,17 @@ const SearchInput = ({ onChangeText, inputClick, inputRef }) => {
 };
 
 SearchInput.propTypes = {
+  /**
+   * Called every time the input value changes
+   */
   onChangeText: PropTypes.func.isRequired,
+  /**
+   * Called every time the input was clicked
+   */
   inputClick: PropTypes.func,
+  /**
+   * Ref value for input element
+   */
   inputRef: PropTypes.func,
 };
 

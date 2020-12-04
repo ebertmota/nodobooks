@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { Container } from './styles';
 
 const Burguer = ({ onClick, isOpened }) => {
@@ -13,7 +14,13 @@ const Burguer = ({ onClick, isOpened }) => {
 };
 
 Burguer.propTypes = {
+  /**
+   * Function called every time the button was clicked.
+   */
   onClick: PropTypes.func.isRequired,
+  /**
+   * Defines the burger button type based if he is opened.
+   */
   isOpened: PropTypes.bool,
 };
 

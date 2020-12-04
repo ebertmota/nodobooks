@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
+import PropTypes from 'prop-types';
 import { FiAlertCircle } from 'react-icons/fi';
 import { useField } from '@unform/core';
-import PropTypes from 'prop-types';
-import { Container, InputContainer, ErrorIcon, ErrorMessage } from './styles';
 
 import Input from '../../atoms/Input';
+
+import { Container, InputContainer, ErrorIcon, ErrorMessage } from './styles';
 
 const InputField = ({ name, labelText, containerStyle = {}, ...rest }) => {
   const inputRef = useRef(null);
