@@ -46,7 +46,7 @@ const Home = ({ history }) => {
     }
 
     loadBooks();
-  }, []);
+  }, [history.location.state]);
 
   const loadBooksByCategory = useCallback(async category_id => {
     const response = await api.get('/books', {
