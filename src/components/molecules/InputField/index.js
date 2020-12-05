@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { FiAlertCircle } from 'react-icons/fi';
 import { useField } from '@unform/core';
 
-import Input from '../../atoms/Input';
-
 import { Container, InputContainer, ErrorIcon, ErrorMessage } from './styles';
 
 const InputField = ({ name, labelText, containerStyle = {}, ...rest }) => {
@@ -43,7 +41,7 @@ const InputField = ({ name, labelText, containerStyle = {}, ...rest }) => {
         isFilled={isFilled}
         data-testid="input-container"
       >
-        <Input
+        <input
           onFocus={handleInputFocus}
           onBlur={handleInputBlur}
           defaultValue={defaultValue}

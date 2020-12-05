@@ -20,6 +20,15 @@ export const InputContainer = styled.div`
   align-items: center;
   border: 1px solid #e2e2e2;
 
+  input {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    &::placeholder {
+      color: #666360;
+    }
+  }
+
   ${props =>
     props.isErrored &&
     css`
