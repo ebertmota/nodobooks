@@ -40,18 +40,6 @@ const Detail = () => {
     push('/');
   }, [push]);
 
-  const searchBooks = useCallback(
-    async name => {
-      push({
-        pathname: '/',
-        state: {
-          inputFocus: true,
-        },
-      });
-    },
-    [push],
-  );
-
   const toggleModal = useCallback(() => {
     setModalOpen(modal => !modal);
   }, []);
@@ -70,11 +58,7 @@ const Detail = () => {
 
   return (
     <Container>
-      <Header
-        inputValueChanges={searchBooks}
-        inputClick={searchBooks}
-        onCategoryChange={loadBooksByCategory}
-      />
+      <Header onCategoryChange={loadBooksByCategory} />
       <Content>
         <PurchaseModal
           isOpen={modalOpen}

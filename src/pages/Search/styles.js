@@ -16,7 +16,6 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 116px;
 
   @media (max-width: 900px) {
     padding: 20% 0px;
@@ -25,12 +24,6 @@ export const Content = styled.div`
   @media (max-width: 700px) {
     padding: 40% 0px;
   }
-`;
-
-export const BannerImage = styled.img`
-  background: #ffe0e2;
-  width: 100%;
-  padding: 0;
 `;
 
 export const Main = styled.main`
@@ -204,6 +197,53 @@ export const StarsContainer = styled.div`
   @media (max-width: 1180px) {
     > span {
       display: none;
+    }
+  }
+`;
+
+export const ErrorMessageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 1024px) {
+    margin: 200px auto;
+  }
+
+  img {
+    max-width: 600px;
+    margin: 0 auto;
+
+    @media (max-width: 900px) {
+      max-width: 400px;
+    }
+
+    @media (max-width: 700px) {
+      max-width: 300px;
+    }
+  }
+
+  div {
+    @media (min-width: 700px) {
+      align-items: center;
+    }
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 30px;
+    width: 100%;
+    strong {
+      margin-top: 30px;
+      font-size: 36px;
+    }
+    p {
+      display: block;
+      margin: 10px auto;
+      font-size: 24px;
     }
   }
 `;
