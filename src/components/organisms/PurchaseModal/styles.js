@@ -64,7 +64,7 @@ export const ResponseContent = styled.div`
   flex: 1;
   display: flex;
 
-  div {
+  > div {
     display: flex;
     align-items: center;
     justify-content: center;

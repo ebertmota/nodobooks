@@ -16,6 +16,7 @@ import successIcon from '../../../assets/icons/success.svg';
 import errorIcon from '../../../assets/icons/error.svg';
 
 const PurchaseModal = ({ isOpen, setIsOpen, handlePurchase }) => {
+  const [phoneNumberValue, setPhoneNumberValue] = useState('');
   const [purchaseStatus, setPurchaseStatus] = useState('');
 
   const formRef = useRef(null);
@@ -26,12 +27,15 @@ const PurchaseModal = ({ isOpen, setIsOpen, handlePurchase }) => {
         const schema = Yup.object().shape({
           name: Yup.string().required('This field is required'),
           email: Yup.string().required('This field is required'),
-          phone: Yup.number().min(8).required('This field is required'),
+          phone: Yup.string().required('This field is required'),
         });
+        console.log(data);
 
         await schema.validate(data, {
           abortEarly: false,
         });
+
+        console.log(data);
 
         await handlePurchase(data);
 
@@ -47,6 +51,14 @@ const PurchaseModal = ({ isOpen, setIsOpen, handlePurchase }) => {
       }
     },
     [handlePurchase],
+  );
+
+  const handlePhoneNumberChanges = useCallback(
+    e => {
+      setPhoneNumberValue(e.target.value);
+      console.log(phoneNumberValue);
+    },
+    [phoneNumberValue],
   );
 
   const handleClose = useCallback(() => {
@@ -73,12 +85,15 @@ const PurchaseModal = ({ isOpen, setIsOpen, handlePurchase }) => {
               name="email"
               placeholder="Type your e-mail here"
             />
+
             <InputField
+              mask="(999) 99999-9999"
+              type="text"
               labelText="Phone"
-              type="number"
               name="phone"
               placeholder="Type your phone here"
             />
+
             <ButtonsContainer>
               <Button unSelectable onClick={setIsOpen}>
                 CANCEL

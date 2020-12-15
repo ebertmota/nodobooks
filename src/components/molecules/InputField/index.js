@@ -2,10 +2,16 @@ import React, { useEffect, useRef, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { FiAlertCircle } from 'react-icons/fi';
 import { useField } from '@unform/core';
-
+import ReactInputMask from 'react-input-mask';
 import { Container, InputContainer, ErrorIcon, ErrorMessage } from './styles';
 
-const InputField = ({ name, labelText, containerStyle = {}, ...rest }) => {
+const InputField = ({
+  name,
+  labelText,
+  mask,
+  containerStyle = {},
+  ...rest
+}) => {
   const inputRef = useRef(null);
 
   const [isFocused, setIsFocused] = useState(false);
@@ -27,6 +33,12 @@ const InputField = ({ name, labelText, containerStyle = {}, ...rest }) => {
       name: fieldName,
       ref: inputRef.current,
       path: 'value',
+      setValue(ref, value) {
+        ref.setInputValue(value);
+      },
+      clearValue(ref) {
+        ref.setInputValue('');
+      },
     });
   }, [fieldName, registerField]);
 
@@ -41,13 +53,24 @@ const InputField = ({ name, labelText, containerStyle = {}, ...rest }) => {
         isFilled={isFilled}
         data-testid="input-container"
       >
-        <input
-          onFocus={handleInputFocus}
-          onBlur={handleInputBlur}
-          defaultValue={defaultValue}
-          ref={inputRef}
-          {...rest}
-        />
+        {mask === '' ? (
+          <input
+            onFocus={handleInputFocus}
+            onBlur={handleInputBlur}
+            defaultValue={defaultValue}
+            ref={inputRef}
+            {...rest}
+          />
+        ) : (
+          <ReactInputMask
+            mask={mask}
+            onFocus={handleInputFocus}
+            onBlur={handleInputBlur}
+            defaultValue={defaultValue}
+            ref={inputRef}
+            {...rest}
+          />
+        )}
 
         {error && !isFilled && (
           <ErrorIcon title={error}>
@@ -64,10 +87,12 @@ InputField.propTypes = {
   name: PropTypes.string.isRequired,
   containerStyle: PropTypes.object,
   labelText: PropTypes.string.isRequired,
+  mask: PropTypes.array,
 };
 
 InputField.defaultProps = {
   containerStyle: {},
+  mask: '',
 };
 
 export default InputField;
