@@ -14,19 +14,22 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-icons": "^4.1.0",
+    "react-input-mask": "^2.0.4",
     "react-modal": "^3.12.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "react-stars": "^2.2.5",
     "styled-components": "^5.2.1",
     "web-vitals": "^0.2.4",
-    "yup": "^0.31.1"
+    "yup": "^0.31.1",
+    "react-app-rewire-alias": "^0.1.9",
+    "react-app-rewired": "^2.1.8"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject",
     "docz": "docz dev"
   },
   "browserslist": {

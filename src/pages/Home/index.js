@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import ReactStars from 'react-stars';
-import api from '../../services/api';
 
-import Menu from '../../components/atoms/Menu';
-import Button from '../../components/atoms/Button';
-import Footer from '../../components/atoms/Footer';
-import Header from '../../components/organisms/Header';
-import PurchaseModal from '../../components/organisms/PurchaseModal';
+import Menu from '@components/atoms/Menu';
+import Button from '@components/atoms/Button';
+import Footer from '@components/atoms/Footer';
+import Header from '@components/organisms/Header';
+import PurchaseModal from '@components/organisms/PurchaseModal';
 
-import bannerImg from '../../assets/banner.svg';
+import bannerImg from '@assets/banner.svg';
+import api from '@services/api';
 
 import {
   Container,

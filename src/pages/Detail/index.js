@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import ReactStars from 'react-stars';
-import api from '../../services/api';
+import Menu from '@components/atoms/Menu';
 
-import Menu from '../../components/atoms/Menu';
-import Button from '../../components/atoms/Button';
-import Footer from '../../components/atoms/Footer';
-import PurchaseModal from '../../components/organisms/PurchaseModal';
-import Header from '../../components/organisms/Header';
+import Button from '@components/atoms/Button';
+import Footer from '@components/atoms/Footer';
+import PurchaseModal from '@components/organisms/PurchaseModal';
+import Header from '@components/organisms/Header';
+import api from '../../services/api';
 
 import {
   Container,
